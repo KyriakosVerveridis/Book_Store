@@ -7,6 +7,8 @@
 
 {% block content %}
   <ul>
-    <li>Book 1...</li>
+    {% for book in books %}
+      <li>{{book.title}} (Rating: {{book.rating}})</li>
+    {% endfor %}</li>
   </ul>
 {% endblock content %}
