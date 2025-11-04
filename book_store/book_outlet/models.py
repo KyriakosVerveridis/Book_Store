@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator,MaxValueValidator
+from django.urls import reverse
 
 # Create your models here.
 
@@ -20,6 +21,15 @@ class Book(models.Model):
   author = models.CharField(null=True,max_length=100) # Author's name, optional
   is_bestselling = models.BooleanField(default=False) # True if the book is a bestseller
 
+
+  """
+    Returns the canonical URL for this Book instance using Django's reverse() function.
+    Enables dynamic URL generation instead of hardcoding paths in templates or views.
+    """
+  def get_absolute_url(self):
+      return reverse("book-detail", args=[self.id])
+  
+  
   def __str__(self):
     return f"{self.title} ({self.rating})"
   
