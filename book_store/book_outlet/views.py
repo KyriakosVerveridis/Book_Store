@@ -16,14 +16,14 @@ def index(request):
   return render(request,"book_outlet/index.html",context)
 
 
-def book_detail(request,id):
+def book_detail(request,slug):
   """
-    Fetches a single Book by its primary key (pk) and passes its
+    Fetches a single Book by its slug and passes its
     title, author, rating, and bestseller status to the template.
     """
   
   # Fetch the Book with the given primary key (pk) or return 404 if not found
-  book = get_object_or_404(Book,pk=id)
+  book = get_object_or_404(Book,slug=slug)
   context = {
     "title":book.title,
     "author":book.author,

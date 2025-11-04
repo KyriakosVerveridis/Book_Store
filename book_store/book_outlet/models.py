@@ -33,7 +33,7 @@ class Book(models.Model):
     Enables dynamic URL generation instead of hardcoding paths in templates or views.
     """
   def get_absolute_url(self):
-      return reverse("book-detail", args=[self.id])
+      return reverse("book-detail", args=[self.slug])
   
 
   def save(self,*args,**kwargs):
