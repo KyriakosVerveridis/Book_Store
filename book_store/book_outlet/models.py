@@ -26,7 +26,8 @@ class Book(models.Model):
    Stores a URL-friendly version of the title,
    generated automatically in save(), e.g., "Harry Potter 1" → "harry-potter-1"
   """
-  slug = models.SlugField(default="", null=False, db_index=True, primary_key=True)
+  slug = models.SlugField(default="", null=False, blank=True, 
+                          editable=False, db_index=True, primary_key=True)
 
   """
     Returns the canonical URL for this Book instance using Django's reverse() function.
