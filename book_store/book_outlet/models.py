@@ -4,6 +4,13 @@ from django.urls import reverse
 from django.utils.text import slugify
 
 
+class Author(models.Model):
+    """
+    Represents an author with first and last name.
+    """
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+
 class Book(models.Model):
     """
     Model representing a Book.
@@ -18,7 +25,7 @@ class Book(models.Model):
     rating = models.IntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(5)]
     )  # Rating between 1 και 5
-    author = models.CharField(null=True, max_length=100)  # Author's name, optional
+    author = models.ForeignKey(Author, on_delete=models.CASCADE,null=True) # Link to an Author record
     is_bestselling = models.BooleanField(default=False)  # True if the book is a bestseller
 
     # Stores a URL-friendly version of the title.
@@ -28,7 +35,6 @@ class Book(models.Model):
         null=False,
         blank=True,
         db_index=True,
-        primary_key=True,
     )
 
     def get_absolute_url(self):
