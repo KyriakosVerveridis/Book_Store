@@ -10,3 +10,5 @@ class BookAdmin(admin.ModelAdmin):
     - Automatically generates the slug from the title field.
     """
     prepopulated_fields = {"slug": ("title",)}
+    list_filter = ("author","rating",)
+    list_display = ("title","author",)
