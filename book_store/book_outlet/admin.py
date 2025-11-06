@@ -18,3 +18,8 @@ class BookAdmin(admin.ModelAdmin):
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
     list_display = ("first_name","last_name",)    
+
+# Register the Address model
+@admin.register(Address)
+class AddressAdmin(admin.ModelAdmin):
+    list_display = ("street", "postal_code", "city")      

@@ -8,6 +8,15 @@ class Address(models.Model):
     postal_code = models.CharField(max_length=5)
     city = models.CharField(max_length=50)
 
+    def __str__(self):
+        """String representation of the Address object."""
+        return f"{self.street},{self.postal_code},{self.city}"
+    
+    class Meta:
+        """"Defines the plural name of the model
+          as it will appear in the Django admin"""
+        verbose_name_plural = "Address Entries"
+
 class Author(models.Model):
     """
     Represents an author with first and last name.
@@ -20,7 +29,7 @@ class Author(models.Model):
         return f"{self.first_name} {self.last_name}"
 
     def __str__(self):
-        """String representation of the Book object."""
+        """String representation of the Author object."""
         return self.full_name()
 
 class Book(models.Model):
@@ -56,14 +65,6 @@ class Book(models.Model):
         Enables dynamic URL generation instead of hardcoding paths in templates or views.
         """
         return reverse("book-detail", args=[self.slug])
-
-    # The slug field is now automatically generated in the Django admin
-    # using the prepopulated_fields option, so the custom save() method
-    # is no longer required.
-
-    # def save(self, *args, **kwargs):
-    #     self.slug = slugify(self.title)
-    #     super().save(*args, **kwargs)
 
     def __str__(self):
         """String representation of the Book object."""
