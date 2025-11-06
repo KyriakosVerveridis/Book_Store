@@ -25,7 +25,8 @@ class Book(models.Model):
     rating = models.IntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(5)]
     )  # Rating between 1 και 5
-    author = models.ForeignKey(Author, on_delete=models.CASCADE,null=True) # Link to an Author record
+    author = models.ForeignKey(Author, on_delete=models.CASCADE,null=True,
+                               related_name="books") # Link to an Author record
     is_bestselling = models.BooleanField(default=False)  # True if the book is a bestseller
 
     # Stores a URL-friendly version of the title.
