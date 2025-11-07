@@ -7,6 +7,20 @@ from django.utils.text import slugify
 class Country(models.Model):
     name = models.CharField(max_length=80)
     code = models.CharField(max_length=2)
+    
+    def __str__(self):
+        """
+        Returns the name of the Country. Used in
+        Book.published_countries display as well.
+        """
+        return self.name
+
+    class Meta:
+        """
+        "Defines the plural name of the model
+        as it will appear in the Django admin
+        """
+        verbose_name_plural = "Countries"
 
 
 class Address(models.Model):
@@ -19,8 +33,10 @@ class Address(models.Model):
         return f"{self.street},{self.postal_code},{self.city}"
     
     class Meta:
-        """"Defines the plural name of the model
-          as it will appear in the Django admin"""
+        """
+        "Defines the plural name of the model
+        as it will appear in the Django admin
+        """
         verbose_name_plural = "Address Entries"
 
 
