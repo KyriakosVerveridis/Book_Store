@@ -81,6 +81,7 @@ python manage.py runserver
 ---
 
 ## 🧩 Project Structure
+```
 book_store/
 ├── book_store/
 │   ├── __init__.py
@@ -105,7 +106,7 @@ book_store/
 ├── db.sqlite3
 ├── manage.py
 └── requirements.txt
-
+```
 
 ---
 
